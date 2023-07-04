@@ -18,7 +18,7 @@ export const todosSlice = createSlice({
   },
   reducers: {
     addTodo: (state, action) => {
-      state.items.push({ id:'3', title: 'test', completed: false });
+      state.items.push(action.payload);
     }
   },
 });
