@@ -1,4 +1,4 @@
-import Form from "./Form";
+import Form from './Form'
 
 export default function Header() {
   return (
@@ -6,5 +6,5 @@ export default function Header() {
       <h1>todos</h1>
       <Form />
     </header>
-  );
+  )
 }

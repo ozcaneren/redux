@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 
 export const todosSlice = createSlice({
   name: 'todos',
@@ -7,32 +7,36 @@ export const todosSlice = createSlice({
       {
         id: '1',
         title: 'Learn JavaScript',
-        completed: true
+        completed: true,
       },
       {
         id: '2',
         title: 'Learn React',
-        completed: false
-      }
+        completed: false,
+      },
     ],
-    activeFilter: 'all'
+    activeFilter: 'all',
   },
   reducers: {
     addTodo: (state, action) => {
-      state.items.push(action.payload);
+      state.items.push(action.payload)
     },
     toggle: (state, action) => {
-      const {id} = action.payload;
-      const item = state.items.find(item => item.id === id);
-      item.completed = !item.completed;
+      const { id } = action.payload
+      const item = state.items.find((item) => item.id === id)
+      item.completed = !item.completed
     },
     destroy: (state, action) => {
-      const id = action.payload;
-      const filtered = state.items.filter(item => item.id !== id);
-      state.items = filtered;
+      const id = action.payload
+      const filtered = state.items.filter((item) => item.id !== id)
+      state.items = filtered
+    },
+    changeActiveFilter: (state, action) => {
+      state.activeFilter = action.payload
     },
   },
-});
+})
 
-export const { addTodo, toggle, destroy } = todosSlice.actions;
-export default todosSlice.reducer;
+export const { addTodo, toggle, destroy, changeActiveFilter } =
+  todosSlice.actions
+export default todosSlice.reducer

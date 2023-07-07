@@ -1,37 +1,53 @@
 import React from 'react'
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux'
+import { changeActiveFilter } from '../redux/todos/todosSlice'
 
 function ContentFooter() {
+  const dispatch = useDispatch()
 
-  const items = useSelector(state => state.todos.items);
-  const itemsLeft = items.filter(item => !item.completed).length;
-  
-  const activeFilter = useSelector(state => state.todos.activeFilter);
+  const items = useSelector((state) => state.todos.items)
+  const itemsLeft = items.filter((item) => !item.completed).length
+
+  const activeFilter = useSelector((state) => state.todos.activeFilter)
 
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>{itemsLeft}</strong> item{itemsLeft > 1 && 's'} left
-        items left
+        <strong>{itemsLeft}</strong> item{itemsLeft > 1 && 's'} left items left
       </span>
 
       <ul className="filters">
         <li>
-          <a href="#/" className={activeFilter === 'all' ? 'selected' : ''}>All</a>
+          <a
+            href="#/"
+            className={activeFilter === 'all' ? 'selected' : ''}
+            onClick={() => dispatch(changeActiveFilter('all'))}
+          >
+            All
+          </a>
         </li>
         <li>
-          <a href="#/" className={activeFilter === 'active' ? 'selected' : ''}>Active</a>
+          <a
+            href="#/"
+            className={activeFilter === 'active' ? 'selected' : ''}
+            onClick={() => changeActiveFilter('active')}
+          >
+            Active
+          </a>
         </li>
         <li>
-          <a href="#/" className={activeFilter === 'completed' ? 'selected' : ''}>Completed</a>
+          <a
+            href="#/"
+            className={activeFilter === 'completed' ? 'selected' : ''}
+          >
+            Completed
+          </a>
         </li>
       </ul>
 
-      <button className="clear-completed">
-        Clear completed
-      </button>
-	  </footer>
+      <button className="clear-completed">Clear completed</button>
+    </footer>
   )
 }
 

@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { nanoid } from '@reduxjs/toolkit'
 
 function Form() {
-
   const [title, setTitle] = useState('')
 
   const dispatch = useDispatch()
@@ -12,18 +11,18 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(addTodo({ id: nanoid(), title, completed: false }));
+    dispatch(addTodo({ id: nanoid(), title, completed: false }))
 
     setTitle('')
   }
   return (
     <form onSubmit={handleSubmit}>
-      <input 
-        className='new-todo' 
-        placeholder='what needs to be done?' 
-        autoFocus 
-        value={title} 
-        onChange={(e) => setTitle(e.target.value)} 
+      <input
+        className="new-todo"
+        placeholder="what needs to be done?"
+        autoFocus
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
     </form>
   )
