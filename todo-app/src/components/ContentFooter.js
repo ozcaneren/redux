@@ -31,7 +31,7 @@ function ContentFooter() {
           <a
             href="#/"
             className={activeFilter === 'active' ? 'selected' : ''}
-            onClick={() => changeActiveFilter('active')}
+            onClick={() => dispatch(changeActiveFilter('active'))}
           >
             Active
           </a>
@@ -40,6 +40,7 @@ function ContentFooter() {
           <a
             href="#/"
             className={activeFilter === 'completed' ? 'selected' : ''}
+            onClick={() => dispatch(changeActiveFilter('completed'))}
           >
             Completed
           </a>
