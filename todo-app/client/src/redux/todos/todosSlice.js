@@ -47,18 +47,19 @@ export const todosSlice = createSlice({
       state.items = filtered
     },
   },
-  extraReducers: {
-    [getAsyncTodos.pending]: (state, action) => {
-      state.isLoading = true
-    },
-    [getAsyncTodos.fulfilled]: (state, action) => {
-      state.isLoading = false
-      state.items = action.payload
-    },
-    [getAsyncTodos.rejected]: (state, action) => {
-      state.isLoading = false
-      state.error = action.error.message
-    }
+  extraReducers: (builder) => {
+    // get todos
+    builder.addCase(getAsyncTodos.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getAsyncTodos.fulfilled, (state, action) => {
+      state.items = action.payload;
+      state.isLoading = false;
+    });
+    builder.addCase(getAsyncTodos.rejected, (state, action) => {
+      state.error = action.error.message;
+      state.isLoading = false;
+    });
   },
 })
 
