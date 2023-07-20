@@ -9,11 +9,8 @@ function Form() {
 
   const handleSubmit = (e) => {
     if (!title) return
-
     e.preventDefault()
-
     dispatch(addTodo({ title }))
-
     setTitle('')
   }
   return (
