@@ -2,6 +2,7 @@ import './App.css';
 
 //pages
 import Home from './pages/Home';
+import Detail from './pages/Detail';
 
 import {
   BrowserRouter as Router,
@@ -14,7 +15,8 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />          
+          <Route path="/:id" component={Detail} />          
         </Switch>
       </div>
     </Router>

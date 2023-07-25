@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchCharacters } from '../../redux/charactersSlice'
 import Loading from '../../components/Loading'
 import Error from '../../components/Error'
+import { Link } from 'react-router-dom' 
 
 function Home() {
   const characters = useSelector((state) => state.characters.items)
@@ -29,10 +30,12 @@ function Home() {
       {
         characters.map((character) => (
           <div key={character.id}>
-            <h3>{character.name}</h3>
-            <p>{character.status}</p>
-            <p>{character.species}</p>
-            <img src={character.image} alt={character.name} />
+            <Link to='/'>
+              <h3>{character.name}</h3>
+              <p>{character.status}</p>
+              <p>{character.species}</p>
+              <img src={character.image} alt={character.name} />
+            </Link>
           </div>
         ))
       }

@@ -12,7 +12,8 @@ export const charactersSlice = createSlice({
   name: 'characters',
   initialState: {
     items: [],
-    isLoading: false
+    isLoading: false,
+    page: 0,
   },
   reducers: {},
   extraReducers: {
